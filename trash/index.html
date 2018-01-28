@@ -1,0 +1,50 @@
+
+<html>
+
+<head>
+	<title>Delet Chat</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/socket.io/1.0.6/socket.io.min.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+	<meta name="theme-color" content="#0097a7">
+
+	<script type="text/javascript" charset="utf-8">
+
+		$(document).ready(function() {
+			var socket = null;
+			var test = "http://127.0.0.1:5000";
+      sockets();
+
+			function sockets() {
+				socket = io.connect(test, {});
+
+				socket.on('connect', function () {
+					console.log("it work");
+				});
+
+				socket.on('new_point', function (point) {
+					console.log(point);
+				});
+
+				socket.on('new_frame', function (counter) {
+					console.log("new frame, fam");
+          console.log(counter);
+				});
+
+				socket.on('message', (message) => {
+					console.log(message);
+				});
+			}
+
+		});
+	</script>
+</head>
+
+<body>
+  <h1>YO FANM</h1>
+</body>
+
+</html>
